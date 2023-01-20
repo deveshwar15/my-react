@@ -1,0 +1,56 @@
+.header{
+    width:80%;
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: seagreen;
+    padding: 0 10%;
+}
+
+.logo{
+    font-size: 2rem;
+    color: white;
+    font-weight: bold;
+    position: relative;
+    right: 5rem;
+}
+
+.header ul {
+    list-style: none;
+    margin: auto;
+    padding:10px 0px;
+    display: flex;
+    align-items: baseline;
+    
+}
+
+.header li{
+    margin-left: 0rem;
+}
+
+.header a{
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #0b0a0b;
+    margin-right: 90px;
+    font-weight: bold;
+}
+
+.header a:hover,
+.header a:active,
+.header a.active{
+    color: white
+}
+.badge{
+    background-color: #cc2062;
+    color: white;
+    border-radius: 12px;
+    padding: 0 1rem;
+    margin-left: 0.5rem;
+}
+
+.hr{
+    border-top: 1px dashed seagreen;
+  }
+  
