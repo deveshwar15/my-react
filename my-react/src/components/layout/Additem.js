@@ -1,6 +1,26 @@
+import { useContext } from 'react';
+
 import classes from './Addstyle.module.css';
+import FavoritesContext from '../../store/favorites';
 
 function Additem(props) {
+    const favoritesCtx=useContext(FavoritesContext); 
+      
+      const itemIsFavorite=favoritesCtx.itemIsFavorite(props.id);
+    function toggleFavoritesHandler(){
+      if (itemIsFavorite){
+        favoritesCtx.removeFavorite(props.id)
+      } else{
+        favoritesCtx.addFavorite({
+            id: props.id,
+            name: props.name,
+            feedback:props.feedback,
+            image: props.image,
+            role: props.role,
+            address:props.address,
+        });
+      }
+    }
     return <li className={classes.item}>
         <div className={classes.image}>
             <img src={props.image} alt={props.name}/>
@@ -12,7 +32,7 @@ function Additem(props) {
             <p>FEEDBACK - {props.feedback}</p>
         </div>
         <div className={classes.actions}>
-            <button>MOVE TO PROFILE</button>
+            <button onClick={toggleFavoritesHandler}>{itemIsFavorite ? 'Move Back Again' : 'Move to Profile'}</button>
         </div>
     </li>
   }

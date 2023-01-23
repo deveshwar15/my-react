@@ -1,36 +1,23 @@
-import {Link} from "react-router-dom";
-
-import classes from './Style.module.css';
+import Navigation from './Navigation';
 
 // import videobg from '../assets/ink.mp4'
-// import style from './Video.module.css'
+
+import style from './Video.module.css'
 
 function Login() {
-    return (
-        <div>
-            <header className={classes.header}>
-                <div  className={classes.logo}>TO BE TITLED</div>
-                    <nav>
-                        <ul>
-                            <li>
-                            <Link to="/Login">HOME</Link>
-                            <Link to="/register">PROFILE</Link>
-                            <Link to="/landing">CHECK ON!</Link>
-                            <Link to="/user">ADD ON!</Link>
-                            </li>                                                                       
-                        </ul>
-                    </nav>
-            </header>
-                {/* <div className={style.main}>
-                <div className={style.overplay}></div>
-                <video src={videobg} type="video/mp4" loop autoPlay muted />
-                <div className={style.content}>
-                <h1>Welcome</h1>
-                <p>heyy!</p>
-                </div>
-            </div>  */}
-        </div>
+    return(
+      <section>
+        <Navigation/>
+        {/* <div className={style.main}>
+            <div className={style.overplay}></div>
+            <video src={videobg} type="video/mp4" loop autoPlay muted /> */}
+            <div className={style.content}>
+            <h1>If not YOU, who? If not now, when?</h1>
+            <h3>Enjoy by Adding your Profiles!</h3>
+            </div>
+        {/* </div>  */}
+      </section>
     );
-  }
+}
   
   export default Login;

@@ -1,8 +1,8 @@
-import Login from "./login";
+import Navigation from "./Navigation";
 import UserForm from "./userform";
 function Userdetails() {
     return (
-      <div><Login/>
+      <div><Navigation/>
       <section>
         <center><h1>Add the Details! </h1></center>
         <UserForm/>

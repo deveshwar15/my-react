@@ -2,9 +2,15 @@ import Box from '../components/layout/ui/Box';
 import classes from './UserForm.module.css';
 
 function UserForm(){
+
+
+    function submitHandler(event){
+        event.preventDefault();
+    }
+
     return(
         <Box>
-            <form className={classes.form}>
+            <form className={classes.form} onSubmit={submitHandler}>
                 <div className={classes.control}>
                     <label htmlFor="name">NAME</label>
                     <input type="text" required id="name"/>

@@ -1,20 +1,18 @@
+import { useContext } from 'react';
 
-import videobg from '../assets/ink.mp4'
-import classes from './Video.module.css'
-import Login from './login';
+import FavoritesContext from '../store/favorites';
+
+import Addlist from '../components/layout/Addlist';
+import Navigation from './Navigation';
+
 function Register() {
+  const favoritesCtx = useContext(FavoritesContext);
     return(
-    <div>
-      <Login/>
-        <div className={classes.main}>
-          <div className={classes.overplay}></div>
-          <video src={videobg} type="video/mp4" loop autoPlay muted />
-          <div className={classes.content}>
-            <h1>Welcome</h1>
-            <p>heyy!</p>
-          </div>
-        </div> 
-    </div>  
+      <section>
+        <Navigation/>
+        <center><h1>ADDED PROFILES!</h1></center>
+        <Addlist profiles={favoritesCtx.favorites}/>
+      </section>
     );
 }
   
