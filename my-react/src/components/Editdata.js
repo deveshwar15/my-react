@@ -1,8 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Box from '../components/layout/ui/Box';
-import classes from './UserForm.module.css';
+import classes from './Editdata.module.css'
+import Navigation from '../pages/Navigation';
+import { useParams } from 'react-router-dom';
 
-function UserForm(){
+
+function Editdata(){
+    const {id} = useParams();
     const [name,setName]=useState("");
     const [role,setRole]=useState("");
     const [image,setImage]=useState("");
@@ -21,14 +25,24 @@ function UserForm(){
         console.log('Received');
     }
   
+    useEffect(()=>{
+        fetch('http://localhost:8080/api/v1/profiles'+id).then((res)=>{
+            return res.json()
+        }).then((resp)=>{
+            setName(resp.name)
+            setRole(resp.role)
+            setImage(resp.image)
+            setAddress(resp.address)
+            setFeedback(resp.feedback)
+        })
+    },[])
 
-    function Save()
+    function Update()
     {
         let data={name,role,image,address,feedback}
-        fetch("http://localhost:8080/api/v1/profiles",{
-            method:"POST",
+        fetch("http://localhost:8080/api/v1/profiles"+id,{
+            method:"PUT",
             headers:{
-                'Accept':'application/json',
                 'Content-Type':'application/json',
             },
             body:JSON.stringify(data)
@@ -41,6 +55,8 @@ function UserForm(){
 
 
     return(
+        <div>
+        <Navigation/>
         <Box>
             <form className={classes.form} onSubmit={submitHandler}>
                 <div className={classes.control}>
@@ -64,11 +80,12 @@ function UserForm(){
                     <textarea id='feedback' required rows='2' value={feedback}  onChange={(e)=>{setFeedback(e.target.value)}}></textarea>
                 </div>
                 <div className={classes.actions}>
-                    <button onClick={Save}>SUBMIT</button>
+                    <button onClick={Update}>UPDATE</button>
                 </div>
             </form>
         </Box>
+        </div>
     )
 }
 
-export default UserForm;
+export default Editdata;

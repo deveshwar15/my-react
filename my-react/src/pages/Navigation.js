@@ -2,6 +2,7 @@ import {Link} from "react-router-dom";
 
 import classes from './Style.module.css';
 
+
 function Navigation() {
     return (
         <div>
